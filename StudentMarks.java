@@ -11,7 +11,7 @@ import java.util.Arrays;
 class Student {
     String lastName;
     String firstName;
-    int studentID;
+    String studentID;
     double a1Mark;
     double a2Mark;
     double a3Mark;

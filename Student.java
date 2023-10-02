@@ -5,46 +5,45 @@
  * @author Sweta Acharya
  * @version 10/01/2023
  */
+ class Student {
+    //Variable Declaration
+    String lastName;
+    String firstName;
+    String lastName;
+    String studentID;
+    double ass1Mark;
+    double ass2Mark;
+    double ass3Mark;
+    double totalMark;
 
-
-    
-return null;
-        }
-    }
-
-    private static double parseDouble(String value) {
-        try {
-            if (!value.isEmpty() && value.matches("[0-9.]+")) {
-                return Double.parseDouble(value);
+    public Student(String lastName, String firstName, String studentID, double ass1Mark, double ass2Mark, double ass3Mark) {
+        this.lastName = lastName;
+    public Student(String firstName, String lastName, String studentID, double ass1Mark, double ass2Mark, double ass3Mark) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.studentID = studentID;
+        this.ass1Mark = ass1Mark;
+        this.ass2Mark = ass2Mark;
+@@ -139,4 +139,21 @@ private static void studentsBelowThreshold(Student[] students, double threshold)
             }
-        } catch (NumberFormatException e) {
-            // exception handling
-        }
-        return 0.0; // default value
-    }
-    private static void studentTotalMarkCalculation(Student[] students) {
-        System.out.println("Student list with their name, student ID, assessment marks and the total mark:");
-        for (Student student : students) {
-@@ -113,4 +124,19 @@ private static void studentTotalMarkCalculation(Student[] students) {
-            }
         }
     }
+    private static void sortStudentUsingBubbleSort(Student[] students, boolean ascending) {
+        int num = students.length;
+        for (int j = 0; j < num - 1; j++) {
+            for (int k = 0; k < num - j - 1; k++) {
+                if (students[k] != null && students[k + 1] != null) {
+                    double mark1 = students[k].totalMark;
+                    double mark2 = students[k + 1].totalMark;
 
-    private static void studentsBelowThreshold(Student[] students, double threshold) {
-        System.out.println("Total marks below  " + threshold + ":");
-        for (Student student : students) {
-            if (student != null) { 
-                // null check
-                double totalMark = student.ass1Mark + student.ass2Mark + student.ass3Mark;
-                if (totalMark < threshold) {
-                    System.out.println("Name: " + student.firstName + " " + student.lastName +
-                        ", Student ID: " + student.studentID +
-                        ", Total Mark: " + totalMark);
+                    if ((ascending && mark1 > mark2) || (!ascending && mark1 < mark2)) {
+                        Student temp = students[k];
+                        students[k] = students[k + 1];
+                        students[k + 1] = temp;
+                    }
                 }
             }
         }
     }
-}
-
 }
 
